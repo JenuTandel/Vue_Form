@@ -1,0 +1,31 @@
+{
+  "employeeData": [
+    {
+      "empName": "Jinal",
+      "password": "111111",
+      "email": "jinal.tandel@1rivet.com",
+      "phoneno": "9033982833",
+      "dob": "2023-06-08",
+      "dutystarttime": "11:20",
+      "id": 3
+    },
+    {
+      "empName": "Jinal",
+      "password": "123456",
+      "email": "jinal.tandel@1rivet.com",
+      "phoneno": "9033982883",
+      "dob": "2023-06-24",
+      "dutystarttime": "23:37",
+      "id": 5
+    },
+    {
+      "empName": "Kinal",
+      "password": "s123456",
+      "email": "kinal@gmail.com",
+      "phoneno": "1234567891",
+      "dob": "2023-06-09",
+      "dutystarttime": "19:53",
+      "id": 6
+    }
+  ]
+}
