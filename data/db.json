@@ -26,6 +26,15 @@
       "dob": "2023-06-09",
       "dutystarttime": "19:53",
       "id": 6
+    },
+    {
+      "empName": "jinal",
+      "password": "123456",
+      "email": "jinal.tandel@1rivet.com",
+      "phoneno": "0903398283",
+      "dob": "2023-05-31",
+      "dutystarttime": "20:39",
+      "id": 7
     }
   ]
 }

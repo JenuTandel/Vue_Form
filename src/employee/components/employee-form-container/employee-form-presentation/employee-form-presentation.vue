@@ -24,6 +24,9 @@
         <span class="text-danger">{{ errors.password }}</span>
       </div>
       <div class="mb-3">
+        <template>
+          <Checkbox />
+        </template>
         <Field
           type="email"
           name="email"
@@ -64,7 +67,24 @@
         />
         <span class="text-danger">{{ errors.dutystarttime }}</span>
       </div>
-      <div class="mb-3">
+
+      <!-- <div
+        class="g-recaptcha"
+        data-siteKey="6LesQI4mAAAAAMnLs8DbBkVqrzVS_3tJqRlwML0V"
+      ></div> -->
+      <vue-recaptcha
+        sitekey="6LesQI4mAAAAAMnLs8DbBkVqrzVS_3tJqRlwML0V"
+        size="normal"
+        theme="light"
+        hl="gu"
+        @verify="recaptchaVerified"
+        @expire="recaptchaExpired"
+        @fail="recaptchaFailed"
+        ref="vueRecaptcha1"
+      >
+      </vue-recaptcha>
+      <span class="text-danger">{{ captchaerr }}</span>
+      <div class="my-3">
         <!-- :disabled="!meta.valid" -->
         <button type="submit" class="btn btn-dark">Add Employee</button>
       </div>
@@ -81,15 +101,17 @@
 
 <script setup lang="ts">
 import { useForm, Field, configure } from "vee-validate";
-import { computed, reactive, watch } from "vue";
+import { computed, reactive, ref, watch } from "vue";
 import * as yup from "yup";
 import { EmployeeData } from "../../../model/employee.model";
+import vueRecaptcha from "vue3-recaptcha2";
 
 configure({
   validateOnBlur: true,
   validateOnChange: true,
   validateOnInput: true,
 });
+
 const schema = yup.object({
   empName: yup
     .string()
@@ -147,12 +169,32 @@ const emit = defineEmits<{
 }>();
 
 const onSubmit = handleSubmit((values: EmployeeData, { resetForm }) => {
-  emit("postEmployee", values);
-  resetForm();
+  if (isCaptchaVerified.value) {
+    emit("postEmployee", values);
+    resetForm();
+  } else {
+    captchaerr.value = "reCAPTCHA is mandatory";
+  }
 });
 
 const validateForm = () => {
   validate();
+};
+const isCaptchaVerified = ref(false);
+const vueRecaptcha1 = ref();
+
+const recaptchaVerified = (response: any) => {
+  if (response) {
+    isCaptchaVerified.value = true;
+    captchaerr.value = "";
+  }
+};
+const recaptchaExpired = () => {
+  vueRecaptcha1.value.reset();
+};
+const captchaerr = ref();
+const recaptchaFailed = (err: any) => {
+  // captchaerr.value = err;
 };
 </script>
 
