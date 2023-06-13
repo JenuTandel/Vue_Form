@@ -10,6 +10,7 @@
           id="empName"
           class="form-control"
           placeholder="Enter fullname"
+          autocomplete="on"
         />
         <span class="text-danger">{{ errors.empName }}</span>
       </div>
@@ -24,15 +25,13 @@
         <span class="text-danger">{{ errors.password }}</span>
       </div>
       <div class="mb-3">
-        <template>
-          <Checkbox />
-        </template>
         <Field
           type="email"
           name="email"
           id="email"
           class="form-control"
           placeholder="Enter your mail id"
+          autocomplete="on"
         />
         <span class="text-danger">{{ errors.email }}</span>
       </div>
@@ -48,12 +47,12 @@
       </div>
       <div class="mb-3">
         <Field
-          type="number"
+          type="tel"
           name="phoneno"
           id="phoneno"
           class="form-control"
           placeholder="Contact number"
-          min="0"
+          autocomplete="on"
         />
         <span class="text-danger">{{ errors.phoneno }}</span>
       </div>

@@ -35,6 +35,33 @@
       "dob": "2023-05-31",
       "dutystarttime": "20:39",
       "id": 7
+    },
+    {
+      "empName": "Kinal",
+      "password": "123456",
+      "email": "k@gmail.com",
+      "phoneno": "9033659856",
+      "dob": "2023-06-01",
+      "dutystarttime": "11:32",
+      "id": 8
+    },
+    {
+      "empName": "Hetv",
+      "password": "123456",
+      "email": "hetv@gmail.com",
+      "phoneno": "1234567890",
+      "dob": "2023-06-08",
+      "dutystarttime": "11:42",
+      "id": 9
+    },
+    {
+      "empName": "Ravi",
+      "password": "213123123",
+      "email": "ravi@gmial.com",
+      "phoneno": "1234567789",
+      "dob": "2023-06-15",
+      "dutystarttime": "11:49",
+      "id": 10
     }
   ]
 }
