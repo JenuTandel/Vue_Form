@@ -72,8 +72,8 @@
         data-siteKey="6LesQI4mAAAAAMnLs8DbBkVqrzVS_3tJqRlwML0V"
       ></div> -->
       <vue-recaptcha
-        sitekey="6LesQI4mAAAAAMnLs8DbBkVqrzVS_3tJqRlwML0V"
-        size="normal"
+        sitekey="6LdK564mAAAAAHF9SvY8svhRaxE-iznsSBcKniXH"
+        size="invisible"
         theme="light"
         hl="gu"
         @verify="recaptchaVerified"
@@ -82,7 +82,9 @@
         ref="vueRecaptcha1"
       >
       </vue-recaptcha>
-      <span class="text-danger">{{ captchaerr }}</span>
+
+      <!-- <button @click="recaptcha">Execute recaptcha</button> -->
+      <!-- <span class="text-danger">{{ captchaerr }}</span> -->
       <div class="my-3">
         <!-- :disabled="!meta.valid" -->
         <button type="submit" class="btn btn-dark">Add Employee</button>
@@ -104,7 +106,16 @@ import { computed, reactive, ref, watch } from "vue";
 import * as yup from "yup";
 import { EmployeeData } from "../../../model/employee.model";
 import vueRecaptcha from "vue3-recaptcha2";
+import axios from "axios";
 
+// import { VueRecaptcha, useReCaptcha } from "vue-recaptcha-v3";
+
+// const { executeRecaptcha, recaptchaLoaded } = useReCaptcha();
+// const recaptcha = async () => {
+//   await recaptchaLoaded();
+//   const token = await executeRecaptcha("login");
+//   console.log(token);
+// };
 configure({
   validateOnBlur: true,
   validateOnChange: true,
@@ -168,12 +179,12 @@ const emit = defineEmits<{
 }>();
 
 const onSubmit = handleSubmit((values: EmployeeData, { resetForm }) => {
-  if (isCaptchaVerified.value) {
-    emit("postEmployee", values);
-    resetForm();
-  } else {
-    captchaerr.value = "reCAPTCHA is mandatory";
-  }
+  // if (isCaptchaVerified.value) {
+  emit("postEmployee", values);
+  resetForm();
+  // } else {
+  //   captchaerr.value = "reCAPTCHA is mandatory";
+  // }
 });
 
 const validateForm = () => {

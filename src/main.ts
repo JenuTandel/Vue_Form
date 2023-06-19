@@ -9,8 +9,8 @@ app.use(store);
 app.use(router);
 app.mount("#app");
 
-import { VueRecaptchaPlugin } from "vue-recaptcha";
+// import { VueRecaptchaPlugin } from "vue-recaptcha";
 
-app.use(VueRecaptchaPlugin, {
-  v2SiteKey: "6LesQI4mAAAAAMnLs8DbBkVqrzVS_3tJqRlwML0V",
-});
+// app.use(VueRecaptchaPlugin, {
+//   v2SiteKey: "6LesQI4mAAAAAMnLs8DbBkVqrzVS_3tJqRlwML0V",
+// });

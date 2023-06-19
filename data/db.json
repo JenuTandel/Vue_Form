@@ -1,16 +1,7 @@
 {
   "employeeData": [
     {
-      "empName": "Jinal",
-      "password": "111111",
-      "email": "jinal.tandel@1rivet.com",
-      "phoneno": "9033982833",
-      "dob": "2023-06-08",
-      "dutystarttime": "11:20",
-      "id": 3
-    },
-    {
-      "empName": "Jinal",
+      "empName": "Jinallllllll",
       "password": "123456",
       "email": "jinal.tandel@1rivet.com",
       "phoneno": "9033982883",
@@ -28,15 +19,6 @@
       "id": 6
     },
     {
-      "empName": "jinal",
-      "password": "123456",
-      "email": "jinal.tandel@1rivet.com",
-      "phoneno": "0903398283",
-      "dob": "2023-05-31",
-      "dutystarttime": "20:39",
-      "id": 7
-    },
-    {
       "empName": "Hetv",
       "password": "123456",
       "email": "hetv@gmail.com",
@@ -44,6 +26,15 @@
       "dob": "2023-06-08",
       "dutystarttime": "11:42",
       "id": 9
+    },
+    {
+      "empName": "Vini",
+      "password": "hjiokl",
+      "email": "vini@1rivet.com",
+      "phoneno": "0990485298",
+      "dob": "2023-06-07",
+      "dutystarttime": "12:14",
+      "id": 10
     }
   ]
 }
