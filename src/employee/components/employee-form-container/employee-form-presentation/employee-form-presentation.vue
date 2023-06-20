@@ -71,7 +71,12 @@
         class="g-recaptcha"
         data-siteKey="6LesQI4mAAAAAMnLs8DbBkVqrzVS_3tJqRlwML0V"
       ></div> -->
-      <vue-recaptcha
+
+      <!-- checkbox: 6LesQI4mAAAAAMnLs8DbBkVqrzVS_3tJqRlwML0V -->
+      <!-- invisible: 6LdK564mAAAAAHF9SvY8svhRaxE-iznsSBcKniXH -->
+      <!-- v3: 6Lejwa4mAAAAAPjD3vYhwR8ZlIXl9kprJ4MehP4l -->
+
+      <!-- <vue-recaptcha
         sitekey="6LdK564mAAAAAHF9SvY8svhRaxE-iznsSBcKniXH"
         size="invisible"
         theme="light"
@@ -81,10 +86,10 @@
         @fail="recaptchaFailed"
         ref="vueRecaptcha1"
       >
-      </vue-recaptcha>
+      </vue-recaptcha> -->
 
-      <!-- <button @click="recaptcha">Execute recaptcha</button> -->
-      <!-- <span class="text-danger">{{ captchaerr }}</span> -->
+      <button type="button" @click="recaptcha">Execute recaptcha</button>
+      <span class="text-danger">{{ captchaerr }}</span>
       <div class="my-3">
         <!-- :disabled="!meta.valid" -->
         <button type="submit" class="btn btn-dark">Add Employee</button>
@@ -105,17 +110,47 @@ import { useForm, Field, configure } from "vee-validate";
 import { computed, reactive, ref, watch } from "vue";
 import * as yup from "yup";
 import { EmployeeData } from "../../../model/employee.model";
-import vueRecaptcha from "vue3-recaptcha2";
+// import vueRecaptcha from "vue3-recaptcha2";
+
+import { useReCaptcha } from "vue-recaptcha-v3";
 import axios from "axios";
 
-// import { VueRecaptcha, useReCaptcha } from "vue-recaptcha-v3";
+let recaptchaInstance = useReCaptcha();
+const recaptcha = async () => {
+  await recaptchaInstance?.recaptchaLoaded();
+  const token = await recaptchaInstance?.executeRecaptcha("login");
 
-// const { executeRecaptcha, recaptchaLoaded } = useReCaptcha();
+  const secret = "6LfSUY0mAAAAAC4YW9FYM5-UjtpARNHUiMYSsB_J";
+  const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`;
+
+  await axios
+    .post(url)
+    .then((res) => {
+      console.log(res.data.score);
+
+      if (res.data.score > 0.4) {
+        isCaptchaVerified.value = true;
+      } else {
+        isCaptchaVerified.value = false;
+      }
+    })
+    .catch((err) => {
+      return err;
+    });
+
+  return token;
+};
+// import { load } from "recaptcha-v3";
+
 // const recaptcha = async () => {
-//   await recaptchaLoaded();
-//   const token = await executeRecaptcha("login");
-//   console.log(token);
+//   console.log("HEllo");
+//   const recaptcha2 = await load("6Lejwa4mAAAAAPjD3vYhwR8ZlIXl9kprJ4MehP4l");
+//   console.log(recaptcha2);
+//   const token = await recaptcha2.execute("login");
+//   console.log("token", token);
+//   return token;
 // };
+
 configure({
   validateOnBlur: true,
   validateOnChange: true,
@@ -179,12 +214,12 @@ const emit = defineEmits<{
 }>();
 
 const onSubmit = handleSubmit((values: EmployeeData, { resetForm }) => {
-  // if (isCaptchaVerified.value) {
-  emit("postEmployee", values);
-  resetForm();
-  // } else {
-  //   captchaerr.value = "reCAPTCHA is mandatory";
-  // }
+  if (isCaptchaVerified.value) {
+    emit("postEmployee", values);
+    resetForm();
+  } else {
+    captchaerr.value = "reCAPTCHA is mandatory";
+  }
 });
 
 const validateForm = () => {

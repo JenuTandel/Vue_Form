@@ -17,24 +17,6 @@
       "dob": "2023-06-09",
       "dutystarttime": "19:53",
       "id": 6
-    },
-    {
-      "empName": "Hetv",
-      "password": "123456",
-      "email": "hetv@gmail.com",
-      "phoneno": "1234567890",
-      "dob": "2023-06-08",
-      "dutystarttime": "11:42",
-      "id": 9
-    },
-    {
-      "empName": "Vini",
-      "password": "hjiokl",
-      "email": "vini@1rivet.com",
-      "phoneno": "0990485298",
-      "dob": "2023-06-07",
-      "dutystarttime": "12:14",
-      "id": 10
     }
   ]
 }
