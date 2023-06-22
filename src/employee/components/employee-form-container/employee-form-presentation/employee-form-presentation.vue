@@ -216,6 +216,7 @@ const emit = defineEmits<{
 const onSubmit = handleSubmit((values: EmployeeData, { resetForm }) => {
   if (isCaptchaVerified.value) {
     emit("postEmployee", values);
+    captchaerr.value = "";
     resetForm();
   } else {
     captchaerr.value = "reCAPTCHA is mandatory";
@@ -226,21 +227,21 @@ const validateForm = () => {
   validate();
 };
 const isCaptchaVerified = ref(false);
-const vueRecaptcha1 = ref();
+// const vueRecaptcha1 = ref();
 
-const recaptchaVerified = (response: any) => {
-  if (response) {
-    isCaptchaVerified.value = true;
-    captchaerr.value = "";
-  }
-};
-const recaptchaExpired = () => {
-  vueRecaptcha1.value.reset();
-};
+// const recaptchaVerified = (response: any) => {
+//   if (response) {
+//     isCaptchaVerified.value = true;
+//     captchaerr.value = "";
+//   }
+// };
+// const recaptchaExpired = () => {
+//   vueRecaptcha1.value.reset();
+// };
 const captchaerr = ref();
-const recaptchaFailed = (err: any) => {
-  // captchaerr.value = err;
-};
+// const recaptchaFailed = (err: any) => {
+//   // captchaerr.value = err;
+// };
 </script>
 
 <style scoped>

@@ -6,7 +6,7 @@
       "email": "jinal.tandel@1rivet.com",
       "phoneno": "9033982883",
       "dob": "2023-06-24",
-      "dutystarttime": "23:37",
+      "dutystarttime": "01:39",
       "id": 5
     },
     {
@@ -14,9 +14,99 @@
       "password": "s123456",
       "email": "kinal@gmail.com",
       "phoneno": "1234567891",
-      "dob": "2023-06-09",
+      "dob": "2023-07-01",
       "dutystarttime": "19:53",
       "id": 6
+    },
+    {
+      "empName": "Ravi",
+      "password": "123456",
+      "email": "ravi@gmial.com",
+      "phoneno": "1234567789",
+      "dob": "2023-06-23",
+      "dutystarttime": "15:23",
+      "id": 7
+    },
+    {
+      "empName": "Hetv",
+      "password": "123456",
+      "email": "hetv@gmail.com",
+      "phoneno": "1234567789",
+      "dob": "2023-06-23",
+      "dutystarttime": "12:28",
+      "id": 8
+    },
+    {
+      "empName": "Vini",
+      "password": "123456",
+      "email": "vini@gmail.com",
+      "phoneno": "1234567789",
+      "dob": "2023-06-17",
+      "dutystarttime": "13:26",
+      "id": 9
+    },
+    {
+      "empName": "Jinu",
+      "password": "123456",
+      "email": "jinaltandel06@gmail.com",
+      "phoneno": "1234567789",
+      "dob": "2023-06-17",
+      "dutystarttime": "16:28",
+      "id": 10
+    },
+    {
+      "empName": "Hetal",
+      "password": "134562",
+      "email": "hetal@gmail.com",
+      "phoneno": "1234567789",
+      "dob": "2023-06-17",
+      "dutystarttime": "15:31",
+      "id": 11
+    },
+    {
+      "empName": "Ravi",
+      "password": "123456",
+      "email": "ravi@gmial.com",
+      "phoneno": "1234567789",
+      "dob": "2023-06-11",
+      "dutystarttime": "15:43",
+      "id": 12
+    },
+    {
+      "empName": "Hetv",
+      "password": "1231231",
+      "email": "hetal@gmail.com",
+      "phoneno": "1234567789",
+      "dob": "2023-06-22",
+      "dutystarttime": "17:44",
+      "id": 13
+    },
+    {
+      "empName": "Jinu",
+      "password": "21321321",
+      "email": "jinal.tandel@utu.ac.in",
+      "phoneno": "1234567789",
+      "dob": "2023-06-06",
+      "dutystarttime": "15:48",
+      "id": 14
+    },
+    {
+      "empName": "Ravi",
+      "password": "0200000",
+      "email": "ravi@gmial.com",
+      "phoneno": "1234567789",
+      "dob": "2023-06-01",
+      "dutystarttime": "15:46",
+      "id": 15
+    },
+    {
+      "empName": "Hetal",
+      "password": "4242444",
+      "email": "hetv@gmail.com",
+      "phoneno": "1234567789",
+      "dob": "2023-06-30",
+      "dutystarttime": "15:49",
+      "id": 16
     }
   ]
 }

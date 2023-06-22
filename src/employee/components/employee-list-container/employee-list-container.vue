@@ -3,6 +3,7 @@
     :data="employee"
     @deleteEmployee="deleteEmployee"
     @getemployeeData="getemployeeData"
+    @getPageNumber="getPageNumber"
   ></employee-list-presentation>
 </template>
 
@@ -15,6 +16,8 @@ import emitter from "@/emitter/emitter.mitt";
 
 const employee = ref();
 const empData = ref();
+
+const pageNumber = ref(1);
 
 onMounted(() => {
   emitter.on("getData", () => {
@@ -30,7 +33,9 @@ getEmployeeData();
 
 //get employee data
 function getEmployeeData() {
-  employeeServices.getEmployeeData().then((res) => {
+  employeeServices.getEmployeeData(pageNumber.value, 5).then((res) => {
+    console.log(pageNumber.value);
+    console.log(res);
     employee.value = res.data;
   });
 }
@@ -44,5 +49,10 @@ function deleteEmployee(id: number) {
 //get employee data from details button
 function getemployeeData(employee: EmployeeData) {
   empData.value = employee;
+}
+
+function getPageNumber(num: number) {
+  pageNumber.value = num;
+  getEmployeeData();
 }
 </script>
