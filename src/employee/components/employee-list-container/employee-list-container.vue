@@ -1,6 +1,7 @@
 <template>
   <employee-list-presentation
     :data="employee"
+    :pageSize="pageSize"
     @deleteEmployee="deleteEmployee"
     @getemployeeData="getemployeeData"
     @getPageNumber="getPageNumber"
@@ -18,24 +19,31 @@ const employee = ref();
 const empData = ref();
 
 const pageNumber = ref(1);
+const pageSize = 5;
+const isLoadMore = ref(true);
 
-onMounted(() => {
-  emitter.on("getData", () => {
-    getEmployeeData();
-  });
-});
+// onMounted(() => {
+//   emitter.on("getData", () => {
+//     console.log("call");
+//     getEmployeeData();
+//     // employeeServices.getAllEmployeeData().then((res) => {
+//     //   employee.value = res.data;
+//     // });
+//   });
+// });
 
-onUnmounted(() => {
-  emitter.off("getData");
-});
+// onUnmounted(() => {
+//   emitter.off("getData");
+// });
 
 getEmployeeData();
 
 //get employee data
 function getEmployeeData() {
-  employeeServices.getEmployeeData(pageNumber.value, 5).then((res) => {
-    console.log(pageNumber.value);
-    console.log(res);
+  employeeServices.getEmployeeData(pageNumber.value, pageSize).then((res) => {
+    if (res.data.length % pageSize != 0) {
+      isLoadMore.value = false;
+    }
     employee.value = res.data;
   });
 }
@@ -53,6 +61,10 @@ function getemployeeData(employee: EmployeeData) {
 
 function getPageNumber(num: number) {
   pageNumber.value = num;
-  getEmployeeData();
+  if (isLoadMore.value) {
+    console.log(isLoadMore);
+    getEmployeeData();
+    console.log(pageNumber.value);
+  }
 }
 </script>

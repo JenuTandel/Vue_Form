@@ -10,15 +10,6 @@
       "id": 5
     },
     {
-      "empName": "Kinal",
-      "password": "s123456",
-      "email": "kinal@gmail.com",
-      "phoneno": "1234567891",
-      "dob": "2023-07-01",
-      "dutystarttime": "19:53",
-      "id": 6
-    },
-    {
       "empName": "Ravi",
       "password": "123456",
       "email": "ravi@gmial.com",
@@ -107,6 +98,150 @@
       "dob": "2023-06-30",
       "dutystarttime": "15:49",
       "id": 16
+    },
+    {
+      "empName": "Vishwani",
+      "password": "123156",
+      "email": "vini@1rivet.com",
+      "phoneno": "9904852986",
+      "dob": "2023-06-08",
+      "dutystarttime": "15:08",
+      "id": 17
+    },
+    {
+      "empName": "jinal",
+      "password": "11121212",
+      "email": "jinal.tandel@1rivet.com",
+      "phoneno": "0903398283",
+      "dob": "2023-06-24",
+      "dutystarttime": "14:07",
+      "id": 18
+    },
+    {
+      "empName": "aa",
+      "password": "123123",
+      "email": "jinal@1rivet.com",
+      "phoneno": "0903398283",
+      "dob": "2023-06-14",
+      "dutystarttime": "13:08",
+      "id": 19
+    },
+    {
+      "empName": "Arpan",
+      "password": "123456",
+      "email": "admin@1rivet.com",
+      "phoneno": "1234567890",
+      "dob": "2023-06-06",
+      "dutystarttime": "15:32",
+      "id": 20
+    },
+    {
+      "empName": "a",
+      "password": "1345642",
+      "email": "a@gmail.com",
+      "phoneno": "2132121212",
+      "dob": "2023-06-19",
+      "dutystarttime": "14:54",
+      "id": 21
+    },
+    {
+      "empName": "aaa",
+      "password": "123456",
+      "email": "aaa@gmail.com",
+      "phoneno": "1231231230",
+      "dob": "2023-06-23",
+      "dutystarttime": "14:56",
+      "id": 22
+    },
+    {
+      "empName": "aaaa",
+      "password": "aaaaaa",
+      "email": "aaaa@gmail.com",
+      "phoneno": "1234561230",
+      "dob": "2023-06-07",
+      "dutystarttime": "14:56",
+      "id": 23
+    },
+    {
+      "empName": "j",
+      "password": "111111",
+      "email": "j@gmail.com",
+      "phoneno": "1234567890",
+      "dob": "2023-06-24",
+      "dutystarttime": "15:00",
+      "id": 24
+    },
+    {
+      "empName": "h",
+      "password": "123456",
+      "email": "h@gmail.com",
+      "phoneno": "1231231234",
+      "dob": "2023-06-09",
+      "dutystarttime": "15:03",
+      "id": 25
+    },
+    {
+      "empName": "hh",
+      "password": "1231234123",
+      "email": "hh@gmail.com",
+      "phoneno": "1234123444",
+      "dob": "2023-06-02",
+      "dutystarttime": "15:04",
+      "id": 26
+    },
+    {
+      "empName": "a",
+      "password": "123123",
+      "email": "a@gmail.com",
+      "phoneno": "1234567899",
+      "dob": "2023-06-15",
+      "dutystarttime": "15:54",
+      "id": 28
+    },
+    {
+      "empName": "asd",
+      "password": "123456",
+      "email": "asd@gmail.com",
+      "phoneno": "1231478523",
+      "dob": "2023-06-18",
+      "dutystarttime": "17:00",
+      "id": 29
+    },
+    {
+      "empName": "hjhj",
+      "password": "jnkjkjnk",
+      "email": "kkk@gmail.com",
+      "phoneno": "5112312132",
+      "dob": "2023-06-07",
+      "dutystarttime": "16:21",
+      "id": 30
+    },
+    {
+      "empName": "Jinal",
+      "password": "dddddd",
+      "email": "j@gmialc.om",
+      "phoneno": "1111111111",
+      "dob": "2023-06-11",
+      "dutystarttime": "17:23",
+      "id": 31
+    },
+    {
+      "empName": "jinal",
+      "password": "smcmcc",
+      "email": "jinal@gmail.com",
+      "phoneno": "1231234560",
+      "dob": "2023-06-01",
+      "dutystarttime": "17:24",
+      "id": 32
+    },
+    {
+      "empName": "vini",
+      "password": "cdcdcvfd",
+      "email": "vini@gmail.com",
+      "phoneno": "1234567890",
+      "dob": "2023-06-03",
+      "dutystarttime": "17:27",
+      "id": 33
     }
   ]
 }

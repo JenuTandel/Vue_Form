@@ -35,7 +35,7 @@ function postEmployee(values: EmployeeData) {
     employee.value = values;
     employeeService.addEmployeeData(employee.value).then((res) => {
       if (res) {
-        emitter.emit("getData");
+        emitter.emit("getData", employee.value);
       }
     });
   }

@@ -13,7 +13,7 @@
           <th>Actions</th>
         </thead>
         <tbody>
-          <tr v-for="(i, index) in data" :key="i.id">
+          <tr v-for="(i, index) in empdata" :key="i.id">
             <td>{{ index + 1 }}</td>
             <td>{{ i.empName }}</td>
             <td>{{ i.email }}</td>
@@ -32,6 +32,7 @@
               </button>
             </td>
           </tr>
+          <p v-if="isLoading">"Loading..."</p>
         </tbody>
       </table>
     </div>
@@ -47,26 +48,21 @@ import { computed, onMounted, ref, watch } from "vue";
 const router = useRouter();
 const props = defineProps<{
   data: EmployeeData[];
+  pageSize: number;
 }>();
 
-const empdata: { value: EmployeeData[] };
+const empdata = ref<EmployeeData[]>([]);
 const data = computed(() => {
+  // console.log("props", props.data);
   return props.data;
 });
 
-watch(
-  data,
-  () => {
-    console.log(data.value);
-    if (data.value) {
-      data.value.forEach((element: EmployeeData) => {
-        console.log(element);
-        empdata.value.push(element);
-      });
-    }
-  },
-  { immediate: true }
-);
+watch(data, () => {
+  data.value.forEach((element) => {
+    empdata.value.push(element);
+  });
+  console.log(empdata.value);
+});
 
 const emit = defineEmits<{
   (event: "deleteEmployee", values: number): void;
@@ -74,6 +70,12 @@ const emit = defineEmits<{
   (event: "getemployeeData", values: EmployeeData): void;
   (event: "getPageNumber", values: number): void;
 }>();
+
+onMounted(() => {
+  emitter.on("getData", (e: any) => {
+    empdata.value.push(e);
+  });
+});
 
 //edit button functionality
 function onEdit(id: number) {
@@ -91,14 +93,19 @@ function onDetails(employee: EmployeeData) {
 }
 
 const pageNumber = ref(1);
+const isLoading = ref(false);
 
 const load = (e: any) => {
   let { scrollTop, clientHeight, scrollHeight } = e.target;
   if (scrollTop + clientHeight == scrollHeight) {
-    setTimeout(() => {
+    isLoading.value = true;
+    if (props.data.length % props.pageSize == 0 && props.data.length != 0) {
       pageNumber.value++;
       emit("getPageNumber", pageNumber.value);
-    }, 1000);
+      isLoading.value = false;
+    } else {
+      isLoading.value = false;
+    }
   }
 };
 </script>
