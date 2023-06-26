@@ -1,6 +1,13 @@
 <template>
   <section>
     <h2 class="mb-3">Employee List</h2>
+    <button @click="exportCSV">Export as CSV</button>
+    <select class="" v-model="selectedTime" @change="onSelect">
+      <option value="" selected>Select Duty time</option>
+      <option value="01:39">1:00</option>
+      <option value="02:15">2:00</option>
+      <option value="15:03">3:00</option>
+    </select>
     <div class="table-wrapper overflow-auto" @scroll="load">
       <table class="table">
         <thead class="position-sticky bg-white top-0">
@@ -13,7 +20,7 @@
           <th>Actions</th>
         </thead>
         <tbody>
-          <tr v-for="(i, index) in empdata" :key="i.id">
+          <tr v-for="(i, index) in filteredData" :key="i.id">
             <td>{{ index + 1 }}</td>
             <td>{{ i.empName }}</td>
             <td>{{ i.email }}</td>
@@ -32,6 +39,7 @@
               </button>
             </td>
           </tr>
+          <p v-if="filteredData.length == 0">No Data found</p>
           <p v-if="isLoading">"Loading..."</p>
         </tbody>
       </table>
@@ -45,13 +53,43 @@ import emitter from "@/emitter/emitter.mitt";
 import { useRouter } from "vue-router";
 import { computed, onMounted, ref, watch } from "vue";
 
+const empdata = ref<EmployeeData[]>([]);
+const filteredData = ref();
+const selectedTime = ref("");
+filteredData.value = empdata.value;
+
+const onSelect = () => {
+  if (selectedTime.value == "") {
+    filteredData.value = empdata.value;
+  } else {
+    filteredData.value = empdata.value.filter(
+      (data) => data.dutystarttime.toString() === selectedTime.value
+      // data.dutystarttime.getHours.toString() === selectedTime.value
+    );
+  }
+};
+
+const exportCSV = () => {
+  const csvContent = convertToCSV(empdata.value);
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "data.csv";
+  link.click();
+};
+const convertToCSV = (data: any) => {
+  const headers = Object.keys(data[0]);
+  const rows = data.map((obj: any) => headers.map((header) => obj[header]));
+  const csvArray = [headers, ...rows];
+  return csvArray.map((row) => row.join(",")).join("\n");
+};
+
 const router = useRouter();
 const props = defineProps<{
   data: EmployeeData[];
   pageSize: number;
 }>();
 
-const empdata = ref<EmployeeData[]>([]);
 const data = computed(() => {
   // console.log("props", props.data);
   return props.data;

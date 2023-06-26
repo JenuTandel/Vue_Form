@@ -175,7 +175,7 @@ const schema = yup.object({
     .string()
     .matches(/^[0-9]{10}$/, "Enter correct contact number")
     .required(),
-  dob: yup.string().required(),
+  dob: yup.date().required(),
   dutystarttime: yup.string().required(),
 });
 

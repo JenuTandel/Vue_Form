@@ -242,6 +242,33 @@
       "dob": "2023-06-03",
       "dutystarttime": "17:27",
       "id": 33
+    },
+    {
+      "empName": "Arpan",
+      "password": "1324567",
+      "email": "admin@1rivet.com",
+      "phoneno": "0123456789",
+      "dob": "2023-06-16",
+      "dutystarttime": "01:39",
+      "id": 34
+    },
+    {
+      "empName": "JJ",
+      "password": "123456789",
+      "email": "jinal.tandel@1rivet.com",
+      "phoneno": "0903398283",
+      "dob": "2023-06-01",
+      "dutystarttime": "01:39",
+      "id": 35
+    },
+    {
+      "empName": "Jay",
+      "password": "123456",
+      "email": "jay@gmail.com",
+      "phoneno": "1111223564",
+      "dob": "2023-06-11",
+      "dutystarttime": "01:39",
+      "id": 36
     }
   ]
 }
