@@ -88,7 +88,9 @@
       >
       </vue-recaptcha> -->
 
-      <button type="button" @click="recaptcha">Execute recaptcha</button>
+      <button type="button" id="captcha" @click="recaptcha">
+        Execute recaptcha
+      </button>
       <span class="text-danger">{{ captchaerr }}</span>
       <div class="my-3">
         <!-- :disabled="!meta.valid" -->
@@ -107,13 +109,20 @@
 
 <script setup lang="ts">
 import { useForm, Field, configure } from "vee-validate";
-import { computed, reactive, ref, watch } from "vue";
+import { computed, onMounted, reactive, ref, watch } from "vue";
 import * as yup from "yup";
 import { EmployeeData } from "../../../model/employee.model";
 // import vueRecaptcha from "vue3-recaptcha2";
 
 import { useReCaptcha } from "vue-recaptcha-v3";
 import axios from "axios";
+
+onMounted(() => {
+  const btn = document.getElementById("captcha");
+  setTimeout(() => {
+    btn?.click();
+  }, 3000);
+});
 
 let recaptchaInstance = useReCaptcha();
 const recaptcha = async () => {

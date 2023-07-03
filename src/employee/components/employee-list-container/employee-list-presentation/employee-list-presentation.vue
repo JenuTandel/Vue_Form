@@ -9,7 +9,7 @@
       <option value="15:03">3:00</option>
     </select>
     <div class="table-wrapper overflow-auto" @scroll="load">
-      <table class="table">
+      <table class="table border">
         <thead class="position-sticky bg-white top-0">
           <th>Sr. No.</th>
           <th>Employee Name</th>
@@ -20,7 +20,7 @@
           <th>Actions</th>
         </thead>
         <tbody>
-          <tr v-for="(i, index) in filteredData" :key="i.id">
+          <tr v-for="(i, index) in empdata" :key="i.id">
             <td>{{ index + 1 }}</td>
             <td>{{ i.empName }}</td>
             <td>{{ i.email }}</td>
@@ -38,7 +38,19 @@
                 Details
               </button>
             </td>
+            <!-- <td>
+              <button @click="toggleRow(index)">
+                {{ isRowExpanded(index) ? "Collapse" : "Expand" }}
+              </button>
+            </td> -->
           </tr>
+          <!-- <tr v-for="(row, index) in filteredData" :key="'expanded-' + index">
+            <td :colspan="columnCount">
+              <div v-if="isRowExpanded(index)">
+                <p>trial version</p>
+              </div>
+            </td>
+          </tr> -->
           <p v-if="filteredData.length == 0">No Data found</p>
           <p v-if="isLoading">"Loading..."</p>
         </tbody>
@@ -57,6 +69,21 @@ const empdata = ref<EmployeeData[]>([]);
 const filteredData = ref();
 const selectedTime = ref("");
 filteredData.value = empdata.value;
+const expandedRows = ref<any>([]);
+const columnCount = ref();
+
+// const toggleRow = (index: number) => {
+//   if (isRowExpanded(index)) {
+//     expandedRows.value = expandedRows.value.filter(
+//       (rowIndex: any) => rowIndex !== index
+//     );
+//   } else {
+//     expandedRows.value.push(index);
+//   }
+// };
+// const isRowExpanded = (index: any) => {
+//   return expandedRows.value.includes(index);
+// };
 
 const onSelect = () => {
   if (selectedTime.value == "") {
@@ -79,7 +106,15 @@ const exportCSV = () => {
 };
 const convertToCSV = (data: any) => {
   const headers = Object.keys(data[0]);
-  const rows = data.map((obj: any) => headers.map((header) => obj[header]));
+  const rows = data.map((obj: any) =>
+    headers.map((header) => {
+      if (typeof obj[header] === "string" && obj[header].includes(",")) {
+        return `"${obj[header]}"`;
+      } else {
+        return obj[header];
+      }
+    })
+  );
   const csvArray = [headers, ...rows];
   return csvArray.map((row) => row.join(",")).join("\n");
 };
@@ -99,7 +134,7 @@ watch(data, () => {
   data.value.forEach((element) => {
     empdata.value.push(element);
   });
-  console.log(empdata.value);
+  columnCount.value = Object.keys(empdata.value[0]).length;
 });
 
 const emit = defineEmits<{

@@ -30,7 +30,7 @@
     {
       "empName": "Vini",
       "password": "123456",
-      "email": "vini@gmail.com",
+      "email": "vini@gmail.com,abc,abc",
       "phoneno": "1234567789",
       "dob": "2023-06-17",
       "dutystarttime": "13:26",
@@ -260,15 +260,6 @@
       "dob": "2023-06-01",
       "dutystarttime": "01:39",
       "id": 35
-    },
-    {
-      "empName": "Jay",
-      "password": "123456",
-      "email": "jay@gmail.com",
-      "phoneno": "1111223564",
-      "dob": "2023-06-11",
-      "dutystarttime": "01:39",
-      "id": 36
     }
   ]
 }

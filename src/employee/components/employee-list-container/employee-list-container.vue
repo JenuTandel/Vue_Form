@@ -62,9 +62,7 @@ function getemployeeData(employee: EmployeeData) {
 function getPageNumber(num: number) {
   pageNumber.value = num;
   if (isLoadMore.value) {
-    console.log(isLoadMore);
     getEmployeeData();
-    console.log(pageNumber.value);
   }
 }
 </script>
