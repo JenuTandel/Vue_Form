@@ -104,6 +104,7 @@
         CheckValidation
       </button>
     </div>
+    <h3>Score: {{ score }}</h3>
   </section>
 </template>
 
@@ -116,6 +117,8 @@ import { EmployeeData } from "../../../model/employee.model";
 
 import { useReCaptcha } from "vue-recaptcha-v3";
 import axios from "axios";
+
+const score = ref();
 
 onMounted(() => {
   const btn = document.getElementById("captcha");
@@ -135,8 +138,8 @@ const recaptcha = async () => {
   await axios
     .post(url)
     .then((res) => {
-      console.log(res.data.score);
-
+      // console.log(res.data.score);
+      score.value = res.data.score;
       if (res.data.score > 0.4) {
         isCaptchaVerified.value = true;
       } else {
